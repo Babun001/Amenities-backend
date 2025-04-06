@@ -118,5 +118,16 @@
       }
     ],
     "image": "https://cellesta.in/wp-content/themes/cellesta-theme/img/one-mg%20(1).webp"
+  },
+  "abc": {
+    "description": "a to z",
+    "tabIcon": "https://img.fortawesome.com/1ce05b4b/start-illustration.svg",
+    "image": "https://images.unsplash.com/photo-1575936123452-b67c3203c357?fm=jpg&q=60&w=3000&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8aW1hZ2V8ZW58MHx8MHx8fDA%3D",
+    "amenities": [
+      {
+        "name": "a",
+        "image": "https://static.vecteezy.com/system/resources/thumbnails/036/324/708/small/ai-generated-picture-of-a-tiger-walking-in-the-forest-photo.jpg"
+      }
+    ]
   }
 }
