@@ -4,7 +4,6 @@ import bodyParser from 'body-parser';
 
 import fs from 'fs/promises';
 import path from 'path';
-import { fileURLToPath } from 'url';
 
 
 const app = express();
@@ -25,31 +24,36 @@ app.get('/api/tabsData', (req, res) => {
             .status(200)
             .json(tabsData);
     } catch (error) {
-        console.error("Failed to read data:", err);
+        console.error("Failed to read data:", error);
         res.status(500).json({ message: "Failed to load tabs data." });
 
     }
 })
 
-// const __filename = fileURLToPath(import.meta.url);
-// const __dirname = path.dirname(__filename);
 
 const datapath = path.resolve('./tabsData.json');
 
 app.post('/api/add-tab', async (req, res) => {
     const newTab = req.body;
-    // console.log(response);
+    // console.log(newTab);
 
     try {
         const file = await fs.readFile(datapath, 'utf-8');
-        const currData = (file);
+        const currData = JSON.parse(file);
+
+        if (!newTab.name || !newTab.description) {
+            return res.status(400).json({ message: "Invalid input" });
+          }
 
         currData[newTab.name] = {
             description: newTab.description,
-            icon: newTab.icon,
+            tabIcon: newTab.icon,
             image: newTab.image,
-            amenitie: newTab.amenitie,
+            amenities: newTab.amenities,
         };
+
+        console.log(currData);
+        
 
         await fs.writeFile(datapath, JSON.stringify(currData, null, 2));
         res
