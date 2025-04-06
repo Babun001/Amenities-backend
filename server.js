@@ -20,14 +20,15 @@ app.use(cors({
 app.use(express.json());
 app.use(bodyParser.json());
 
-import tabsData from './tabsData.json'assert { type: 'json' };
+// import tabsData from './tabsData.json'assert { type: 'json' };
 
 
-app.get('/api/tabsData', (req, res) => {
+app.get('/api/tabsData', async(req, res) => {
     try {
         res
-            .status(200)
-            .json(tabsData);
+        const file = await fs.readFile(datapath, 'utf-8');
+        const tabsData = JSON.parse(file);
+        res.status(200).json(tabsData);
     } catch (error) {
         console.error("Failed to read data:", error);
         res.status(500).json({ message: "Failed to load tabs data." });
