@@ -15,7 +15,7 @@ const app = express();
 const port = 6006;
 
 app.use(cors({
-    origin: '*'
+    origin: 'https://babun-assignment-007.netlify.app'
 }))
 app.use(express.json());
 app.use(bodyParser.json());
